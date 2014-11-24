@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js canvas - particles - floor</title>
+		<title>◢ LUCIAN ◣</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -29,8 +29,8 @@
 		<script>
 
 			var SEPARATION = 100;
-			var AMOUNTX = 50;
-			var AMOUNTY = 50;
+			var AMOUNTX = 20;
+			var AMOUNTY = 20;
 
 			var container, stats;
 			var camera, scene, renderer, particle;
@@ -58,12 +58,15 @@
 
 					for ( var iy = 0; iy < AMOUNTY; iy++ ) {
 
-						particle = new THREE.Sprite( material );
-						particle.scale.y = 20;
-						particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
-						particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 );
-						scene.add( particle );
-
+						for ( var iz = 0; iz < 10; iz++ ) {
+							particle = new THREE.Sprite( material );
+							particle.scale.y = 2;
+							particle.scale.x = 2;
+							particle.position.y = -200 + 40*iz;
+							particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
+							particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 );
+							scene.add( particle );	
+						}
 					}
 
 				}
@@ -72,10 +75,12 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
+/*
 				stats = new Stats();
 				stats.domElement.style.position = 'absolute';
 				stats.domElement.style.top = '0px';
 				container.appendChild( stats.domElement );
+				*/
 
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
