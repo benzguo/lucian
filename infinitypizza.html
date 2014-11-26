@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>◢ LUCIAN ◣</title>
+		<title>◭🅻🆄🅲🅸🅰🅽</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -29,7 +29,7 @@
 		<script>
 
 			var SEPARATION = 100;
-			var AMOUNTX = 20;
+			var AMOUNTX = 10;
 			var AMOUNTY = 20;
 
 			var container, stats;
@@ -59,11 +59,11 @@
 
 					for ( var iy = 0; iy < AMOUNTY; iy++ ) {
 
-						for ( var iz = 0; iz < 10; iz++ ) {
+						for ( var iz = 0; iz < 4; iz++ ) {
 							particle = new THREE.Sprite( material );
 							particle.scale.y = 10;
 							particle.scale.x = 10;
-							particle.position.y = -200 + 40*iz;
+							particle.position.y = -60 + 40*iz;
 							particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
 							particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 );
 							scene.add( particle );	
@@ -76,12 +76,10 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-/*
-				stats = new Stats();
-				stats.domElement.style.position = 'absolute';
-				stats.domElement.style.top = '0px';
-				container.appendChild( stats.domElement );
-				*/
+				// stats = new Stats();
+				// stats.domElement.style.position = 'absolute';
+				// stats.domElement.style.top = '0px';
+				// container.appendChild( stats.domElement );
 
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
@@ -149,8 +147,7 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				camera.position.x += ( mouseX*0.25 - camera.position.x ) * .05;
 				camera.lookAt( scene.position );
 
 				renderer.render( scene, camera );
