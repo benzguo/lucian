@@ -28,6 +28,30 @@
 				color:#0078ff;
 			}
 
+			.header {
+				position: absolute; 
+				top: 10%; 
+				left: 0; 
+				width: 100%; 
+				height: 0%;
+			}
+
+			.footer {
+				position: absolute; 
+				top: 80%; 
+				left: 0; 
+				width: 100%; 
+				height: 0%;
+			}
+
+			.soundcloud {
+				position: absolute; 
+				top: 35%; 
+				left: 25%; 
+				width: 50%; 
+				height: 0%;
+			}
+
 			#info {
 				color: #fff;
 				position: absolute;
@@ -57,9 +81,9 @@
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
 
+		<div class="header">
 		<div class="row">
 	        <div class="col-sm-4">
-
 	        </div>
 	        <div class="col-sm-4">
 	        	<div class="row">	
@@ -68,17 +92,33 @@
 	        	</div>
 	        </div>
 	        <div class="col-sm-4">
+	        </div>
+	    </div>
+	    </div>
+
+		<div class="soundcloud">
+	    <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/179332378&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+	    </div>
+
+		<div class="footer">
+		<div class="row">
+	        <div class="col-sm-4">
+	        </div>
+	        <div class="col-sm-4">
+	        </div>
+	        <div class="col-sm-4">
 		        <!-- facebook -->
 				<div class="fb-like" data-href="https://facebook.com/ilovelucian/" data-layout="button" data-action="like" data-show-faces="false" data-share="false" width="0"></div>
 				<br>
-				<!-- soundcloud -->
-				<iframe allowtransparency="true" scrolling="no" frameborder="no" src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Filovelucian&color=orange_white&size=24" style="width: 24px; height: 24px;"></iframe>
 				<!-- twitter -->
 				<a href="https://twitter.com/ilovelucian" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" data-dnt="true"></a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 				</div>
 	        </div>
 	    </div>
+	    </div>
+
+
 		
 		<script>
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
