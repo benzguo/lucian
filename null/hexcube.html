@@ -27,12 +27,8 @@
 
 		<script>
 
-			var SEPARATION = 100;
-			var AMOUNTX = 10;
-			var AMOUNTY = 20;
-
 			var container, stats;
-			var camera, scene, renderer, particle;
+			var camera, scene, renderer, particle, materials = [];
 			var mouseX = 0, mouseY = 0;
 
 			var windowHalfX = window.innerWidth / 2;
@@ -50,6 +46,7 @@
 				camera.position.set( 0, 150, 500 );
 
 				scene = new THREE.Scene();
+				scene.fog = new THREE.FogExp2( 0x000000, 0.0007 );
 
 				function hexagonWidth(height) {
 					return (Math.sqrt(3)/2.0)*height;
@@ -65,7 +62,9 @@
 					shape.lineTo( width*0.5, height );
 					shape.lineTo( 0, height*0.75 );
 					var points = shape.createPointsGeometry();
-					var line = new THREE.Line( points, new THREE.LineBasicMaterial( { color: color, linewidth: 2 } ) );
+					var material = new THREE.LineBasicMaterial( { color: color, linewidth: 2 } );
+					materials.push(material);
+					var line = new THREE.Line( points, material );
 					line.position.set( x, y, z );
 					line.rotation.set( 0, 0, 0 );
 					line.scale.set( s, s, s );
@@ -80,38 +79,66 @@
 				plane2.position.z = 50;
 				scene.add( plane2 );
 
+				plane3 = new THREE.Group();
+				plane3.position.z = 50;
+				scene.add( plane3 );
+
 				var hex_height = 60;
 				var hex_width = hexagonWidth(hex_height);
 				var i_max = Math.ceil(window.innerWidth/hex_width);
 				var j_max = Math.ceil(window.innerHeight/hex_height);
+				var k_max = 4;
 				var x_offset = (hex_width*i_max/2.0)+(hex_width*0.25);
 				var y_offset = (hex_height*j_max/2.0)-(hex_height*0.125);
 
-				var scale = 1.09;
-				var scaled_width = hex_width*scale;
-				var scaled_height = hex_height*scale;
-				var scaled_xoffset = (scaled_width*i_max/2.0)+(scaled_width*0.25);
-				var scaled_yoffset = (scaled_height*j_max/2.0)-(scaled_height*0.125);
+
 
 				for ( var i = 0; i < i_max; i++ ) {
 					for ( var j = 0; j < j_max; j++ ) { 
-						var hexline1 = hexagonLine(hex_height, 0xffffff,
-							i*hex_width - x_offset, 
-							j*hex_height - y_offset, 
-							0, 1);
-						plane1.add( hexline1 );
+						for (var k = 0; k < k_max; k++) {
 
-						var hexline2 = hexagonLine(hex_height, 0xffffff,
-							(i+0.5)*scaled_width - scaled_xoffset,
-							(j-0.25)*scaled_height - scaled_yoffset, 
-							-40, scale);
-						plane2.add( hexline2 );
+							var scale = 1 + 0.09*k;
+							var scaled_width = hex_width*scale;
+							var scaled_height = hex_height*scale;
+							var scaled_xoffset = (scaled_width*i_max/2.0)+(scaled_width*0.25);
+							var scaled_yoffset = (scaled_height*j_max/2.0)-(scaled_height*0.125);
+
+							var color = new THREE.Color();
+							color.setHSL(0.25*k, 1, 0.8);
+
+							var hexline = hexagonLine(hex_height, color,
+							(i + 0.5*(k%2))*scaled_width - scaled_xoffset,
+							(j - 0.25*(k%2))*scaled_height - scaled_yoffset, 
+							0 - 40*k, scale);
+							scene.add( hexline );
+
+						}
+						// var hexline1 = hexagonLine(hex_height, 0xffffff,
+						// 	i*hex_width - x_offset, 
+						// 	j*hex_height - y_offset, 
+						// 	0, 1);
+						// plane1.add( hexline1 );
+
+						
+
+
+
+						// scale = 1.18;
+						// scaled_width = hex_width*scale;
+						// scaled_height = hex_height*scale;
+						// scaled_xoffset = (scaled_width*i_max/2.0)+(scaled_width*0.25);
+						// scaled_yoffset = (scaled_height*j_max/2.0)-(scaled_height*0.125);
+
+						// var hexline3 = hexagonLine(hex_height, 0xffffff,
+						// 	(i+0.5)*scaled_width - scaled_xoffset,
+						// 	(j-0.25)*scaled_height - scaled_yoffset, 
+						// 	-80, scale);
+						// plane3.add( hexline3 );
+
 					}
 				}
 
-
 				renderer = new THREE.WebGLRenderer();
-				// renderer.setClearColor( 0xffffff, 1);
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
@@ -185,9 +212,10 @@
 			}
 
 			function render() {
+				var time = Date.now() * 0.00005;
 
-				camera.position.x += ( mouseX*0.1 - camera.position.x ) * 0.05;
-				camera.position.y += ( - mouseY*0.1 - camera.position.y ) * 0.05;
+				camera.position.x += ( mouseX*0.25 - camera.position.x ) * 0.05;
+				camera.position.y += ( - mouseY*0.4 - camera.position.y ) * 0.05;
 				camera.lookAt( scene.position );
 
 				renderer.render( scene, camera );
