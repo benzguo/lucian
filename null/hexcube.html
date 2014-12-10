@@ -113,28 +113,6 @@
 							scene.add( hexline );
 
 						}
-						// var hexline1 = hexagonLine(hex_height, 0xffffff,
-						// 	i*hex_width - x_offset, 
-						// 	j*hex_height - y_offset, 
-						// 	0, 1);
-						// plane1.add( hexline1 );
-
-						
-
-
-
-						// scale = 1.18;
-						// scaled_width = hex_width*scale;
-						// scaled_height = hex_height*scale;
-						// scaled_xoffset = (scaled_width*i_max/2.0)+(scaled_width*0.25);
-						// scaled_yoffset = (scaled_height*j_max/2.0)-(scaled_height*0.125);
-
-						// var hexline3 = hexagonLine(hex_height, 0xffffff,
-						// 	(i+0.5)*scaled_width - scaled_xoffset,
-						// 	(j-0.25)*scaled_height - scaled_yoffset, 
-						// 	-80, scale);
-						// plane3.add( hexline3 );
-
 					}
 				}
 
@@ -142,10 +120,10 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				stats = new Stats();
-				stats.domElement.style.position = 'absolute';
-				stats.domElement.style.top = '0px';
-				container.appendChild( stats.domElement );
+				// stats = new Stats();
+				// stats.domElement.style.position = 'absolute';
+				// stats.domElement.style.top = '0px';
+				// container.appendChild( stats.domElement );
 
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
@@ -207,7 +185,7 @@
 				requestAnimationFrame( animate );
 
 				render();
-				stats.update();
+				// stats.update();
 
 			}
 
