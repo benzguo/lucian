@@ -7,7 +7,7 @@
 		<meta name="viewport" content="height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 			body {
-				background-color: #000000;
+				background-color: #ffffff;
 				margin: 0px;
 				overflow: hidden;
 			}
@@ -63,7 +63,7 @@
 					shape.lineTo( width*0.5, height );
 					shape.lineTo( 0, height*0.75 );
 					var points = shape.createPointsGeometry();
-					var material = new THREE.LineBasicMaterial( { color: color, linewidth: 2 } );
+					var material = new THREE.LineBasicMaterial( { color: color, linewidth: 5 } );
 					materials.push(material);
 					var line = new THREE.Line( points, material );
 					line.position.set( x, y, z );
@@ -72,18 +72,6 @@
 					return line;
 				}
 
-				plane1 = new THREE.Group();
-				plane1.position.z = 50;
-				scene.add( plane1 );
-
-				plane2 = new THREE.Group();
-				plane2.position.z = 50;
-				scene.add( plane2 );
-
-				plane3 = new THREE.Group();
-				plane3.position.z = 50;
-				scene.add( plane3 );
-
 				var hex_height = 60;
 				var hex_width = hexagonWidth(hex_height);
 				var i_max = Math.ceil(window.innerWidth/hex_width);
@@ -91,8 +79,6 @@
 				var k_max = 4;
 				var x_offset = (hex_width*i_max/2.0)+(hex_width*0.25);
 				var y_offset = (hex_height*j_max/2.0)-(hex_height*0.125);
-
-
 
 				for ( var i = 0; i < i_max; i++ ) {
 					for ( var j = 0; j < j_max; j++ ) { 
@@ -105,7 +91,7 @@
 							var scaled_yoffset = (scaled_height*j_max/2.0)-(scaled_height*0.125);
 
 							var color = new THREE.Color();
-							color.setHSL(0.25*k, 1, 0.8);
+							color.setHSL(0.1*k + 0.5, 1, 0.8);
 
 							var hexline = hexagonLine(hex_height, color,
 							(i + 0.5*(k%2))*scaled_width - scaled_xoffset,
@@ -119,6 +105,7 @@
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setClearColor( 0xffffff, 1);
 				container.appendChild( renderer.domElement );
 
 				// stats = new Stats();
@@ -193,8 +180,8 @@
 			function render() {
 				var time = Date.now() * 0.00005;
 
-				camera.position.x += ( mouseX*0.25 - camera.position.x ) * 0.05;
-				camera.position.y += ( - mouseY*0.4 - camera.position.y ) * 0.05;
+				camera.position.x += ( mouseX*0.2 - camera.position.x ) * 0.0125;
+				camera.position.y += ( - mouseY*0.4 - camera.position.y ) * 0.0125;
 				camera.lookAt( scene.position );
 
 				renderer.render( scene, camera );
