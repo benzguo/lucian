@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
 	<link rel="shortcut icon" href="../favicon.png" />
 	<head>
 		<title>▙▼◐▲▜</title>
@@ -31,7 +32,6 @@
 			var container, stats;
 			var camera, scene, renderer, particle, materials = [];
 			var mouseX = 0, mouseY = 0;
-			var deviceAlpha = 0, deviceBeta = 0, deviceGamma = 0;
 
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
@@ -117,7 +117,6 @@
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-				document.addEventListener( 'deviceorientation', onDocumentDeviceOrientation )
 
 				//
 
@@ -135,13 +134,6 @@
 
 				renderer.setSize( window.innerWidth, window.innerHeight );
 
-			}
-
-			//
-			function onDocumentDeviceOrientation( event ) {
-				deviceAlpha = event.alpha;
-				mouseX = deviceBeta = event.beta;
-				mouseY = deviceGamma = event.gamma;	
 			}
 
 			function onDocumentMouseMove( event ) {
