@@ -71,7 +71,7 @@
 				particles.rotation.y = 0;
 				particles.rotation.z = 0;
 
-				scene.add( particles );
+				// scene.add( particles );
 
 				// HEXAGONS
 
@@ -136,7 +136,7 @@
 				stats = new Stats();
 				stats.domElement.style.position = 'absolute';
 				stats.domElement.style.top = '0px';
-				container.appendChild( stats.domElement );
+				// container.appendChild( stats.domElement );
 
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
@@ -207,21 +207,21 @@
 				camera.position.y += ( - mouseY*0.3 - camera.position.y ) * 0.1;
 				camera.lookAt( scene.position );
 
-				for ( i = 0; i < scene.children.length; i ++ ) {
+				// for ( i = 0; i < scene.children.length; i ++ ) {
 
-					var object = scene.children[ i ];
+				// 	var object = scene.children[ i ];
 
-					if ( object instanceof THREE.PointCloud ) {
+				// 	if ( object instanceof THREE.PointCloud ) {
 
-						object.rotation.z = time * ( i < 4 ? i + 1 : - ( i + 1 ) );
+				// 		object.rotation.z = time * ( i < 4 ? i + 1 : - ( i + 1 ) );
 
-					}
+				// 	}
 
-				}
+				// }
 
-				color = [1.0, 1.0, 0.8];
-				h = 0.5 + ( 144 * time  % 360 ) / 360;
-				material.color.setHSL( h, 1.0, 0.8 );
+				// color = [1.0, 1.0, 0.8];
+				// h = 0.5 + ( 144 * time  % 360 ) / 360;
+				// material.color.setHSL( h, 1.0, 0.8 );
 
 
 				renderer.render( scene, camera );
