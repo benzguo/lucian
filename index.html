@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<link rel="icon" type="image/ico" href="icon.ico"/>
 	<!-- google analytics -->
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -9,10 +10,10 @@
 	  ga('create', 'UA-37342332-4', 'auto');
 	  ga('send', 'pageview');
 	</script>
-	<link rel="shortcut icon" href="favicon.png" />
+	<!-- <link rel="shortcut icon" href="favicon.png" /> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<head>
-		<title>▙▼◐▲▜</title>
+		<title>Net Sadness</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -38,11 +39,13 @@
 			}
 
 			.header {
+				background-image: url("images/computer_room.png");
+				background-size: cover;
 				position: absolute; 
-				top: 10%; 
+				top: 0; 
 				left: 0; 
 				width: 100%; 
-				height: 0%;
+				height: 100%;
 			}
 
 			.footer {
@@ -55,10 +58,18 @@
 
 			.soundcloud {
 				position: absolute; 
-				top: 35%; 
+				top: 10%; 
 				left: 25%; 
 				width: 50%; 
 				height: 0%;
+			}
+
+			.room img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				min-width: 100%;
+				height: 500px;
 			}
 
 			#info {
@@ -91,23 +102,19 @@
 		}(document, 'script', 'facebook-jssdk'));</script>
 
 		<div class="header">
-		<div class="row">
-	        <div class="col-sm-4">
-	        </div>
-	        <div class="col-sm-4">
-	        	<div class="row">	
-	        		<img src="images/lucianx1.png" width="200px"/>
-	        		<div style="font-size:16px">L U C I A N</div>
-	        	</div>
-	        </div>
-	        <div class="col-sm-4">
-	        </div>
-	    </div>
 	    </div>
 
 		<div class="soundcloud">
-	    <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/187712014&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+	    <iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/187712014&amp;auto_play=true&amp;color=000001&amp;player_type=tiny&amp;enable_api=true&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=false"></iframe>
 	    </div>
+
+	    <!-- <div id="screen"> -->
+			<!-- <object id="main_player" height="18px" width="800px" height="400px"> -->
+				<!-- <param name="movie" value="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F104406287&amp;color=000001&amp;auto_play=true&amp;player_type=tiny&amp;enable_api=true&amp;object_id=main_player"></param> -->
+				<!-- <param name="allowscriptaccess" value="always"></param> -->
+				<!-- <param name="wmode" value="transparent"></param> -->
+				<!-- <embed wmode="transparent" allowscriptaccess="always" height="18" width="100%" src="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F104406287&amp;auto_play=true&amp;color=000001&amp;player_type=tiny&amp;enable_api=true&amp;object_id=main_player" name="main_player"></embed></object> -->
+		<!-- </div -->
 
 		<div class="footer">
 		<div class="row">
@@ -117,12 +124,12 @@
 	        </div>
 	        <div class="col-sm-4">
 		        <!-- facebook -->
-				<div class="fb-like" data-href="https://facebook.com/llllucian/" data-layout="button" data-action="like" data-show-faces="false" data-share="false" width="0"></div>
-				<br>
+				<!-- <div class="fb-like" data-href="https://facebook.com/llllucian/" data-layout="button" data-action="like" data-show-faces="false" data-share="false" width="0"></div>
+				<br> -->
 				<!-- twitter -->
-				<a href="https://twitter.com/lllllucian" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" data-dnt="true"></a>
+				<!-- <a href="https://twitter.com/lllllucian" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" data-dnt="true"></a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-				</div>
+				</div> -->
 	        </div>
 	    </div>
 	    </div>
@@ -157,7 +164,7 @@
 
 				// geometry = new THREE.Geometry();
 
-				// for ( i = 0; i < 20000; i ++ ) {
+				// for ( i = 0; i < 10000; i ++ ) {
 
 				// 	var vertex = new THREE.Vector3();
 				// 	vertex.x = Math.random() * 2000 - 1000;
