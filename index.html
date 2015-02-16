@@ -108,14 +108,6 @@
 	    <iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/187712014&amp;auto_play=true&amp;color=000001&amp;player_type=tiny&amp;enable_api=true&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=false"></iframe>
 	    </div>
 
-	    <!-- <div id="screen"> -->
-			<!-- <object id="main_player" height="18px" width="800px" height="400px"> -->
-				<!-- <param name="movie" value="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F104406287&amp;color=000001&amp;auto_play=true&amp;player_type=tiny&amp;enable_api=true&amp;object_id=main_player"></param> -->
-				<!-- <param name="allowscriptaccess" value="always"></param> -->
-				<!-- <param name="wmode" value="transparent"></param> -->
-				<!-- <embed wmode="transparent" allowscriptaccess="always" height="18" width="100%" src="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F104406287&amp;auto_play=true&amp;color=000001&amp;player_type=tiny&amp;enable_api=true&amp;object_id=main_player" name="main_player"></embed></object> -->
-		<!-- </div -->
-
 		<div class="footer">
 		<div class="row">
 	        <div class="col-sm-4">
@@ -124,12 +116,12 @@
 	        </div>
 	        <div class="col-sm-4">
 		        <!-- facebook -->
-				<!-- <div class="fb-like" data-href="https://facebook.com/llllucian/" data-layout="button" data-action="like" data-show-faces="false" data-share="false" width="0"></div>
-				<br> -->
+				<div class="fb-like" data-href="https://www.facebook.com/pages/Net-Sadness/329551167240241/" data-layout="button" data-action="like" data-show-faces="false" data-share="false" width="0"></div>
+				<br>
 				<!-- twitter -->
-				<!-- <a href="https://twitter.com/lllllucian" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" data-dnt="true"></a>
+				<a href="https://twitter.com/net_sadness" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" data-dnt="true"></a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-				</div> -->
+				</div>
 	        </div>
 	    </div>
 	    </div>
@@ -233,7 +225,6 @@
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
-				// renderer.setClearColor( 0xffffff, 1);
 				container.appendChild( renderer.domElement );
 
 				// stats = new Stats();
@@ -244,8 +235,6 @@
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-
-				//
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
@@ -292,8 +281,6 @@
 
 			}
 
-			//
-
 			function animate() {
 
 				requestAnimationFrame( animate );
@@ -314,23 +301,6 @@
 				materials[1].color.setHSL(0.5*(1.5 + 0.5*(mouseY/windowHalfY)), 1, 0.8);
 				materials[2].color.setHSL(0.5*(2.5 + 1*(mouseX/windowHalfX)), 1, 0.8);
 				materials[3].color.setHSL(0.5*(3.5 + 1*(mouseY/windowHalfY)), 1, 0.8);
-
-				// for ( i = 0; i < scene.children.length; i ++ ) {
-
-				// 	var object = scene.children[ i ];
-
-				// 	if ( object instanceof THREE.PointCloud ) {
-
-				// 		object.rotation.z = time * ( i < 4 ? i + 1 : - ( i + 1 ) );
-
-				// 	}
-
-				// }
-
-				// color = [1.0, 1.0, 0.8];
-				// h = 0.5 + ( 144 * time  % 360 ) / 360;
-				// material.color.setHSL( h, 1.0, 0.8 );
-
 
 				renderer.render( scene, camera );
 
