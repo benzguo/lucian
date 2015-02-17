@@ -10,7 +10,6 @@
 	  ga('create', 'UA-37342332-4', 'auto');
 	  ga('send', 'pageview');
 	</script>
-	<!-- <link rel="shortcut icon" href="favicon.png" /> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<head>
 		<title>Net Sadness</title>
@@ -18,16 +17,13 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 			body {
-				background-color: #000000;
-				color: #ffffff;
-				margin: 0px;
+				background-image: url("images/stars.jpg");
+				background-repeat: repeat;
+				top: 0; 
+				left: 0; 
+				width: 100%; 
+				height: 100%;
 				overflow: hidden;
-				font-family:Helvetica;
-				font-size:33px;
-				text-align:center;
-				font-weight: normal;
-				text-align:center;
-				overflow: visible;
 			}
 
 			iframe.fb_ltr {
@@ -91,21 +87,12 @@
 		<script src="js/renderers/CSS3DRenderer.js"></script>
 		<script src="js/Detector.js"></script>
 		<script src="js/libs/stats.min.js"></script>
-		<!-- facebook -->
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=335187516666172&version=v2.0";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
 
 		<div class="header">
 	    </div>
 
 		<div class="soundcloud">
-	    <iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/187712014&amp;auto_play=true&amp;color=000001&amp;player_type=tiny&amp;enable_api=true&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=false"></iframe>
+	    <iframe width="100%" height="20" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/191546110&amp;auto_play=true&amp;color=000001&amp;player_type=tiny&amp;enable_api=true&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=false"></iframe>
 	    </div>
 
 		<div class="footer">
@@ -115,13 +102,10 @@
 	        <div class="col-sm-4">
 	        </div>
 	        <div class="col-sm-4">
-		        <!-- facebook -->
-				<div class="fb-like" data-href="https://www.facebook.com/pages/Net-Sadness/329551167240241/" data-layout="button" data-action="like" data-show-faces="false" data-share="false" width="0"></div>
-				<br>
 				<!-- twitter -->
-				<a href="https://twitter.com/net_sadness" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" data-dnt="true"></a>
+<!-- 				<a href="https://twitter.com/net_sadness" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false" data-dnt="true"></a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-				</div>
+				</div> -->
 	        </div>
 	    </div>
 	    </div>
@@ -152,6 +136,23 @@
 
 				scene = new THREE.Scene();
 				scene.fog = new THREE.FogExp2( 0x000000, 0.0007 );
+
+
+				// PARTICLES
+				geometry = new THREE.Geometry();
+				for ( i = 0; i < 5000; i ++ ) {
+					var vertex = new THREE.Vector3();
+					vertex.x = (Math.random() * 2000)/2.0;
+					vertex.y = Math.random() * 2000 - 1000;
+					vertex.z = Math.random() * 3000 - 1500;
+					geometry.vertices.push( vertex );
+				}
+				material = new THREE.PointCloudMaterial( { size: 2 } );
+				particles = new THREE.PointCloud( geometry, material );
+				particles.rotation.x = 0;
+				particles.rotation.y = 0;
+				particles.rotation.z = 0;
+				scene.add( particles );
 
 				// HEXAGONS
 
@@ -199,7 +200,7 @@
 				var hex_width = hexagonWidth(hex_height);
 				var i_max = Math.ceil(window.innerWidth/hex_width);
 				var j_max = Math.ceil(window.innerHeight/hex_height);
-				var k_max = 4;
+				var k_max = 3;
 				var x_offset = (hex_width*i_max/2.0)+(hex_width*0.25);
 				var y_offset = (hex_height*j_max/2.0)-(hex_height*0.125);
 
@@ -223,9 +224,12 @@
 					}
 				}
 
-				renderer = new THREE.WebGLRenderer();
+				renderer = new THREE.WebGLRenderer({ alpha: true });
+				renderer.sortObjects = false;
 				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setClearColor( 0x000000, 0 );
 				container.appendChild( renderer.domElement );
+
 
 				// stats = new Stats();
 				// stats.domElement.style.position = 'absolute';
