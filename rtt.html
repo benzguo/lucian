@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - lines - splines</title>
+		<title>spaghetti portal</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -11,40 +11,31 @@
 				overflow: hidden;
 			}
 
-			a {
-				color:#0078ff;
+			.circle-cutout {
+				position:absolute;
+				top: 50%;
+				left: 50%;
+				margin-top:-200px;
+				margin-left: -200px;
+			    width:50%; height:50%;
+			    overflow:hidden;
 			}
-
-			#info {
-				position: absolute;
-				top: 10px; width: 100%;
-				color: #ffffff;
-				padding: 5px;
-				font-family: Monospace;
-				font-size: 13px;
-				text-align: center;
-				z-index:100;
+			.circle-cutout {
+			    content:'';
+			    position:absolute;
+			    border-radius:100%;
+			    width:400px; height:400px;
+			    box-shadow: 0px 0px 0px 2000px #000;
 			}
-
-			a {
-				color: orange;
-				text-decoration: none;
-			}
-
-			a:hover {
-				color: #0080ff;
-			}
-
 		</style>
 	</head>
 	<body>
-
 		<script src="js/libs/three.min.js"></script>
-
 		<script src="js/geometries/hilbert3D.js"></script>
-
 		<script src="js/Detector.js"></script>
 		<script src="js/libs/stats.min.js"></script>
+
+		<div class="circle-cutout"> </div>
 
 		<script>
 
@@ -78,10 +69,10 @@
 				container.appendChild( renderer.domElement );
 
 				var geometry = new THREE.Geometry(),
-					points = hilbert3D( new THREE.Vector3( 0,0,0 ), 400.0, 1, 0, 1, 2, 3, 4, 5, 6, 7 ),
+					points = hilbert3D( new THREE.Vector3( 0,0,0 ), 400.0, 2, 0, 1, 2, 3, 4, 5, 6, 7 ),
 					colors = [], colors2 = [], colors3 = [];
 
-				n_sub = 1;
+				n_sub = 2;
 
 				var position, index;
 
@@ -95,6 +86,7 @@
 					geometry.vertices[ i ] = new THREE.Vector3( position.x, position.y, position.z );
 
 					colors[ i ] = new THREE.Color( 0xffffff );
+					colors[ i ].setHSL( (i / ( points.length * n_sub ))*0.1 + 0.5, 1.0, 0.7 );
 
 				}
 
@@ -192,12 +184,14 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
+				// camera.position.x += ( mouseX - camera.position.x ) * .05;
+				// camera.position.y = 200;
+				camera.position.y += ( - mouseY + 100 - camera.position.y ) * 0.05;
+				// camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
 
 				camera.lookAt( scene.position );
 
-				var time = Date.now() * 0.0005;
+				var time = Date.now() * 0.0002;
 
 				for ( var i = 0; i < scene.children.length; i ++ ) {
 
@@ -212,7 +206,7 @@
 				}
 
 				h = ( 360 * ( 1.0 + time ) % 360 ) / 360;
-				material.color.setHSL( h, 0.5, 0.5 );
+				// material.color.setHSL( h, 0.5, 0.5 );
 
 				renderer.render( scene, camera );
 
